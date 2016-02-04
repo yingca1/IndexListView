@@ -21,7 +21,7 @@ import java.util.TreeMap;
 public abstract class IndexBaseCursorAdapter<T, S extends IndexBaseCursorAdapter.ViewHolder, H extends IndexBaseCursorAdapter.ViewHolder> extends CursorAdapter
     implements SectionIndexer, IndexListView.PinnedSectionListAdapter {
 
-    public abstract class ViewHolder {
+    public static abstract class ViewHolder {
         public final View rootView;
 
         public ViewHolder(View rootView) {
