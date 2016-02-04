@@ -143,7 +143,7 @@ public abstract class IndexBaseCursorAdapter<T, S extends IndexBaseCursorAdapter
     /**
      * The object which is return will determine what section this cursor position will be in.
      *
-     * @param cursor
+     * @param cursor database cursor
      * @return the section from the cursor at its current position.
      * This object will be passed to newSectionView and bindSectionView.
      */
@@ -326,7 +326,7 @@ public abstract class IndexBaseCursorAdapter<T, S extends IndexBaseCursorAdapter
     /////////////////
 
     /**
-     * @param listPosition
+     * @param listPosition position in ListView
      * @return Get the type of View that will be created by getView(int, View, ViewGroup) for the specified item.
      */
     @Override
@@ -404,7 +404,7 @@ public abstract class IndexBaseCursorAdapter<T, S extends IndexBaseCursorAdapter
     protected abstract S createSectionViewHolder(View sectionView, T section);
 
     /**
-     * @param position
+     * @param position position in ListView
      * @param section           is the item stored in the sorted map for the section header.
      * @param sectionViewHolder the ViewHolder which should have data bound to. This maybe reused and have old data in it.
      * @param parent            the parent view. Typically a ListView.
@@ -414,8 +414,6 @@ public abstract class IndexBaseCursorAdapter<T, S extends IndexBaseCursorAdapter
     /**
      * Override to manually create your views. MAKE SURE YOU TAG A ViewHolder TO THIS VIEW!
      * If you do not tag a ViewHolder, the bind methods will give you a null ViewHolder.
-     *
-     * @param parent
      */
     protected View newItemView(Cursor cursor, ViewGroup parent) {
         View view = getInflater().inflate(mItemLayoutResId, parent, false);
@@ -444,7 +442,7 @@ public abstract class IndexBaseCursorAdapter<T, S extends IndexBaseCursorAdapter
     /**
      * Given the index of a section within the array of section objects, returns
      * the starting position of that section within the adapter.
-     * <p/>
+     * 
      * If the section's starting position is outside of the adapter bounds, the
      * position must be clipped to fall within the size of the adapter.
      *
@@ -466,10 +464,10 @@ public abstract class IndexBaseCursorAdapter<T, S extends IndexBaseCursorAdapter
     /**
      * Given a position within the adapter, returns the index of the
      * corresponding section within the array of section objects.
-     * <p/>
+     * 
      * If the section index is outside of the section array bounds, the index
      * must be clipped to fall within the size of the section array.
-     * <p/>
+     * 
      * For example, consider an indexer where the section at array index 0
      * starts at adapter position 100. Calling this method with position 10,
      * which is before the first section, must return index 0.
@@ -490,7 +488,7 @@ public abstract class IndexBaseCursorAdapter<T, S extends IndexBaseCursorAdapter
     /**
      * Returns an array of objects representing mSectionMap of the list. The
      * returned array and its contents should be non-null.
-     * <p/>
+     * 
      * The list view will call toString() on the objects to get the preview text
      * to display while scrolling. For example, an adapter may return an array
      * of Strings representing letters of the alphabet. Or, it may return an
@@ -507,7 +505,7 @@ public abstract class IndexBaseCursorAdapter<T, S extends IndexBaseCursorAdapter
     }
 
     /**
-     * This only affects SDK < 19.
+     * This only affects SDK less than 19.
      * Override this to control the amount of characters the fast scroll dialog can display.
      */
     protected int getMaxIndexerLength() {
